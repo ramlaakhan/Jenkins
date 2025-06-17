@@ -18,3 +18,8 @@ pipeline {
         }
     }
 }
+post {
+    always {
+        echo 'Build finished'
+    }
+}
