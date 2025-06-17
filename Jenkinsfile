@@ -1,4 +1,6 @@
-flag-true
+parameters {
+    booleanParam(name: 'executeTests', defaultValue: true, description: 'Run Tests')
+}
 
 pipeline {
     agent any
@@ -10,17 +12,20 @@ pipeline {
         }
         stage('Test') {
             steps {
-                when {
-                    expression {
-                        flag -- false
-                    }
-                }
                 echo 'Testing Project'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying Project'
+            }
+        }
+        stage('Conditional Test') {
+            when {
+                expression { return params.executeTests }
+            }
+            steps {
+                echo 'Running conditional test stage...'
             }
         }
     }
