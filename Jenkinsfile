@@ -17,9 +17,9 @@ pipeline {
             }
         }
     }
-}
-post {
+    post {
     always {
         echo 'Build finished'
     }
+}
 }
