@@ -19,7 +19,10 @@ pipeline {
     }
     post {
     always {
-        echo 'Build finished'
+        echo 'Post Build Condition Running'
+    }
+    failure {
+        echo 'Post Action if Build Failed'
     }
 }
 }
